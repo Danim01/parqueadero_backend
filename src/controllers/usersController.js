@@ -6,6 +6,8 @@ async function createUser(req, res){
         const [result] = await connection.query(
             `insert into usuarios (nombre, identificacion, celular, email)
             values (?, ?, ?, ?)`,
+            // Utilizamos signos de ? para evitar ataques de sql injection
+            // los cuales se llaman consultas parametrizadas
             [nombre, identificacion, celular, email]
         )
 
